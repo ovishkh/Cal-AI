@@ -1,19 +1,23 @@
 # Pull Request Template
 
 ## Description
+
 Please include a summary of the changes and related context.
 
 - **Type of Change**: [ ] Bug fix [ ] New feature [ ] Documentation update [ ] Other (please describe)
 
 ## Related Issue
+
 Closes: #(issue number)
 
 ## Changes Made
-- 
-- 
-- 
+
+-
+-
+-
 
 ## How Has This Been Tested?
+
 Please describe the tests that you ran to verify your changes.
 
 - [ ] Unit tests
@@ -21,9 +25,11 @@ Please describe the tests that you ran to verify your changes.
 - [ ] Manual testing
 
 ## Screenshots (if applicable)
+
 Add screenshots here for UI/visual changes.
 
 ## Checklist
+
 - [ ] My code follows the style guidelines of this project
 - [ ] I have performed a self-review of my own code
 - [ ] I have commented my code, particularly in hard-to-understand areas
@@ -34,7 +40,9 @@ Add screenshots here for UI/visual changes.
 - [ ] Any dependent changes have been merged and published in downstream modules
 
 ## Deployment Notes
+
 Any notes about deploying this change to production.
 
 ## Reviewers
+
 Please mention reviewers: @ovishkh
