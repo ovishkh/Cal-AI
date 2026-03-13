@@ -153,8 +153,7 @@ See [PROJECT_ARCHITECTURE.md](docs/PROJECT_ARCHITECTURE.md) for details.
 - ☁️ Currently **no cloud-based database** — uses local storage.
 - 🔒 API keys are securely handled and **never hardcoded** in the repository.
 - 📁 Professional project structure with organized folders and documentation
-- 🛠️ Ready for production development and team collaboration
+- 🛠️ Ready for production development and team collaboration.
 
 ---
 
-   
