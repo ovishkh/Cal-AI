@@ -52,7 +52,7 @@ App configuration and customization
 - Build settings
 - Environment-specific setup
 
-### 6. **[MIGRATION_TO_FIREBASE.md](MIGRATION_TO_FIREBASE.md)** *(Optional Backend)*
+### 6. **[MIGRATION_TO_FIREBASE.md](MIGRATION_TO_FIREBASE.md)** _(Optional Backend)_
 
 Complete guide for migrating from local storage to Firebase
 
@@ -63,7 +63,7 @@ Complete guide for migrating from local storage to Firebase
 - Security rules configuration
 - Testing and deployment
 
-### 7. **[MIGRATION_TO_SUPABASE.md](MIGRATION_TO_SUPABASE.md)** *(Optional Backend)*
+### 7. **[MIGRATION_TO_SUPABASE.md](MIGRATION_TO_SUPABASE.md)** _(Optional Backend)_
 
 Complete guide for migrating from local storage to Supabase
 
@@ -85,6 +85,7 @@ If you're new to FoodLens, follow this order:
 5. Use **CONFIGURATION.md** as a reference for customization
 
 For backend scaling, see the migration guides:
+
 - **[MIGRATION_TO_FIREBASE.md](MIGRATION_TO_FIREBASE.md)** for Firebase backend
 - **[MIGRATION_TO_SUPABASE.md](MIGRATION_TO_SUPABASE.md)** for Supabase backend
 
