@@ -52,6 +52,28 @@ App configuration and customization
 - Build settings
 - Environment-specific setup
 
+### 6. **[MIGRATION_TO_FIREBASE.md](MIGRATION_TO_FIREBASE.md)** *(Optional Backend)*
+
+Complete guide for migrating from local storage to Firebase
+
+- Firebase project setup
+- Firestore vs Realtime Database comparison
+- FirebaseService implementation
+- Real-time synchronization
+- Security rules configuration
+- Testing and deployment
+
+### 7. **[MIGRATION_TO_SUPABASE.md](MIGRATION_TO_SUPABASE.md)** *(Optional Backend)*
+
+Complete guide for migrating from local storage to Supabase
+
+- Supabase account and project setup
+- PostgreSQL schema design
+- SupabaseService implementation
+- Row Level Security (RLS) policies
+- Real-time subscriptions
+- Offline support strategies
+
 ## 🚀 Quick Start
 
 If you're new to FoodLens, follow this order:
@@ -62,6 +84,10 @@ If you're new to FoodLens, follow this order:
 4. Review **API_DOCUMENTATION.md** to understand Gemini API integration
 5. Use **CONFIGURATION.md** as a reference for customization
 
+For backend scaling, see the migration guides:
+- **[MIGRATION_TO_FIREBASE.md](MIGRATION_TO_FIREBASE.md)** for Firebase backend
+- **[MIGRATION_TO_SUPABASE.md](MIGRATION_TO_SUPABASE.md)** for Supabase backend
+
 ## 📁 Project Structure
 
 ```
@@ -69,13 +95,18 @@ FoodLens/
 ├── .github/                    # GitHub-specific files
 │   ├── CODE_OF_CONDUCT.md
 │   ├── CONTRIBUTING.md
-│   └── SECURITY.md
+│   ├── SECURITY.md
+│   ├── GITHUB_INSTRUCTIONS.md
+│   ├── pull_request_template.md
+│   └── ISSUE_TEMPLATE.md
 ├── docs/                       # Documentation (This folder)
 │   ├── GETTING_STARTED.md
 │   ├── PROJECT_ARCHITECTURE.md
 │   ├── DEPENDENCIES.md
 │   ├── API_DOCUMENTATION.md
-│   └── CONFIGURATION.md
+│   ├── CONFIGURATION.md
+│   ├── MIGRATION_TO_FIREBASE.md
+│   └── MIGRATION_TO_SUPABASE.md
 ├── lib/                        # Application source code
 │   ├── main.dart
 │   ├── config/                 # Configuration files
@@ -121,6 +152,14 @@ See [CONFIGURATION.md](CONFIGURATION.md#environment-specific-configuration)
 #### Fix a build error?
 
 See [GETTING_STARTED.md](GETTING_STARTED.md#troubleshooting)
+
+#### Migrate to Firebase?
+
+See [MIGRATION_TO_FIREBASE.md](MIGRATION_TO_FIREBASE.md) for complete setup and implementation guide
+
+#### Migrate to Supabase?
+
+See [MIGRATION_TO_SUPABASE.md](MIGRATION_TO_SUPABASE.md) for complete setup and implementation guide
 
 ## 🛠️ Development Guide
 
