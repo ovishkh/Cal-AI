@@ -87,7 +87,7 @@ For detailed documentation on setup, architecture, dependencies, and configurati
 | ----------------- |
 | Ovi Shekh         |
 | Junayed Bin Karim |
-| Mst Azra Zerin    |
+| Mst. Azra Zerin   |
 
 ---
 
