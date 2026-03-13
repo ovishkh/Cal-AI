@@ -370,6 +370,7 @@ FoodLens/
 ### Creating a Release
 
 1. **Create release branch**:
+
    ```bash
    git checkout -b release/v1.x.x
    ```
@@ -431,6 +432,7 @@ git reset --hard HEAD~1
 ## Important Reminders
 
 ⚠️ **DO**:
+
 - ✅ Always pull before pushing
 - ✅ Use meaningful commit messages
 - ✅ Keep commits atomic (one thing per commit)
@@ -439,6 +441,7 @@ git reset --hard HEAD~1
 - ✅ Ask for help if unsure
 
 ❌ **DON'T**:
+
 - ❌ Push directly to main branch
 - ❌ Force push without discussing
 - ❌ Commit sensitive information (use .gitignore)
