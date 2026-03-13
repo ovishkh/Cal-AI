@@ -2,7 +2,8 @@
 
 **FoodLens** is an AI-powered Recipe & Meal Planner app, developed as part of the **Mobile Application Design Lab** course at **Daffodil International University**.
 
-This app leverages the **Gemini API** to generate creative recipes, analyze nutritional content, and deliver personalized weekly meal plans based on user preferences.
+This app leverages the **Gemini API** to generate creative recipes, analyze nutritional content
+, and deliver personalized weekly meal plans based on user preferences.
 
 ---
 
