@@ -1,4 +1,4 @@
-package com.foodlens
+package com.foodlens.mobile
 
 import io.flutter.embedding.android.FlutterActivity
 

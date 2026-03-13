@@ -630,7 +630,7 @@ class _HomeScreenState extends State<HomeScreen>
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('FlavorLens', style: AppTheme.headingLarge),
+                        const Text('FoodLens', style: AppTheme.headingLarge),
                         Text(
                           'Convert ingredients into recipes',
                           style: AppTheme.caption,

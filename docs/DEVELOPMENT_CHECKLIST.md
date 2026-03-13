@@ -102,7 +102,7 @@ Use this checklist to ensure everything is properly configured before pushing to
 - [ ] `android/app/build.gradle.kts` namespace: `com.foodlens`
 - [ ] `android/app/build.gradle.kts` app ID: `com.foodlens`
 - [ ] `android/app/src/main/kotlin/com/foodlens/MainActivity.kt` exists
-- [ ] Old `com.example.flavor_lens_app` directory removed
+- [ ] Old `com.example.food_lens_app` directory removed
 
 ### Web Configuration
 

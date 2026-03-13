@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 16),
                 const Text(
-                  'FlavorLens',
+                  'FoodLens',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 32,

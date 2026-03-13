@@ -12,7 +12,7 @@ class AboutScreen extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('About FlavorLens'),
+          title: const Text('About FoodLens'),
           backgroundColor: Colors.deepOrange,
           foregroundColor: Colors.white,
           leading: IconButton(
@@ -46,7 +46,7 @@ class AboutScreen extends StatelessWidget {
                 const SizedBox(height: 24),
                 // App name
                 const Text(
-                  'FlavorLens',
+                  'FoodLens',
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
@@ -112,7 +112,7 @@ class AboutScreen extends StatelessWidget {
                 const SizedBox(height: 40),
                 // Footer
                 const Text(
-                  '© 2024 FlavorLens Team',
+                  '© 2024 FoodLens Team',
                   style: TextStyle(fontSize: 14, color: Colors.grey),
                 ),
                 const SizedBox(height: 20),
