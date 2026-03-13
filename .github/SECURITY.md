@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-We are committed to maintaining the security and integrity of FoodLens. If you discover a security vulnerability, please report it responsibly by emailing security@foodlens.dev or reaching out to the maintainers.
+We are committed to maintaining the security and integrity of FoodLens. If you discover a security vulnerability, please report it responsibly by emailing security@foodlens.ai or reaching out to the maintainers.
 
 ### Guidelines for Reporting Security Issues:
 
