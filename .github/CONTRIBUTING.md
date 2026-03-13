@@ -84,6 +84,7 @@ By contributing to FoodLens, you agree that your contributions will be licensed 
 
 ## Questions?
 
-Feel free to reach out to the maintainers or create a discussion issue for questions about contributing.
+Feel free to reach out to the maintainers 
+or create a discussion issue for questions about contributing.
 
 Thank you for contributing to FoodLens!
