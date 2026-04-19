@@ -136,6 +136,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       color: Colors.white,
                                     ),
                                   ),
+                                  const SizedBox(height: 4),
+                                  const Text(
+                                    'ovi@gmail.com',
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      color: Colors.white70,
+                                    ),
+                                  ),
                                   const SizedBox(height: 8),
                                   Container(
                                     padding: const EdgeInsets.symmetric(
