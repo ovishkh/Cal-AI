@@ -62,7 +62,6 @@ class _HomeScreenState extends State<HomeScreen>
   // Processing state and data
   bool _processingImage = false;
   bool _generatingRecipe = false;
-  bool _generatingImage = false;
   String _extractedIngredients = '';
   String _statusMessage = '';
 
@@ -255,7 +254,6 @@ class _HomeScreenState extends State<HomeScreen>
     setState(() {
       _isLoading = true;
       _generatingRecipe = true;
-      _generatingImage = false;
       _statusMessage = 'Generating recipe...';
     });
 
@@ -269,19 +267,10 @@ class _HomeScreenState extends State<HomeScreen>
       );
 
       setState(() {
-        _generatingRecipe = false;
-        _generatingImage = true;
-        _statusMessage = 'Creating recipe image...';
-      });
-
-      // Recipe is now available, but image generation might still be in progress
-      setState(() {
         _currentRecipe = recipe;
         _isLoading = false;
-        _statusMessage =
-            recipe.imageUrl.startsWith('data:image')
-                ? 'Recipe ready with AI-generated image!'
-                : 'Recipe ready with stock image';
+        _generatingRecipe = false;
+        _statusMessage = 'Recipe ready!';
 
         // Add to recent recipes and save
         _recentRecipes.insert(0, recipe);
@@ -296,7 +285,6 @@ class _HomeScreenState extends State<HomeScreen>
       setState(() {
         _isLoading = false;
         _generatingRecipe = false;
-        _generatingImage = false;
         _statusMessage = 'Error: $e';
       });
       ScaffoldMessenger.of(
@@ -863,8 +851,6 @@ class _HomeScreenState extends State<HomeScreen>
                                 Text(
                                   _generatingRecipe
                                       ? 'Generating Recipe...'
-                                      : _generatingImage
-                                      ? 'Creating Image...'
                                       : 'Processing...',
                                   style: const TextStyle(
                                     fontSize: 16,
