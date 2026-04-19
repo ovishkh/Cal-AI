@@ -124,6 +124,12 @@ Lecturer, Daffodil International University
    flutter run
    ```
 
+5. **Generate Android APK**
+   ```bash
+   flutter build apk --release
+   ```
+   The APK will be available at `build/app/outputs/flutter-apk/app-release.apk`
+   
 For detailed instructions, see [Getting Started Guide](docs/GETTING_STARTED.md)
 
 ---
