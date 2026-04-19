@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
         _isLoading = false;
       });
 
-      if (email == 'mobashir@gmail.com' && password == 'password') {
+      if (email == 'ovi@gmail.com' && password == 'password') {
         // Set the auth state to logged in
         Provider.of<AuthState>(context, listen: false).login();
 
@@ -260,7 +260,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              'Email: mobashir@gmail.com\nPassword: password',
+                              'Email: ovi@gmail.com\nPassword: password',
                               style: TextStyle(color: Colors.grey[700]),
                             ),
                           ],
