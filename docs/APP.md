@@ -1,6 +1,6 @@
-# FoodLens Documentation
+# Cal AI Documentation
 
-Welcome to the FoodLens documentation! This folder contains comprehensive guides for developers working on and with FoodLens.
+Welcome to the Cal AI documentation! This folder contains comprehensive guides for developers working on and with Cal AI.
 
 ## 📚 Documentation Index
 
@@ -76,7 +76,7 @@ Complete guide for migrating from local storage to Supabase
 
 ## 🚀 Quick Start
 
-If you're new to FoodLens, follow this order:
+If you're new to Cal AI, follow this order:
 
 1. Start with **GETTING_STARTED.md** to set up your development environment
 2. Read **PROJECT_ARCHITECTURE.md** to understand the codebase structure
@@ -92,7 +92,7 @@ For backend scaling, see the migration guides:
 ## 📁 Project Structure
 
 ```
-FoodLens/
+Cal AI/
 ├── .github/                    # GitHub-specific files
 │   ├── CODE_OF_CONDUCT.md
 │   ├── CONTRIBUTING.md
@@ -190,7 +190,7 @@ See [MIGRATION_TO_SUPABASE.md](MIGRATION_TO_SUPABASE.md) for complete setup and 
 
 ### State Management with Provider
 
-FoodLens uses Provider for state management. Read about it in [PROJECT_ARCHITECTURE.md](PROJECT_ARCHITECTURE.md#state-management)
+Cal AI uses Provider for state management. Read about it in [PROJECT_ARCHITECTURE.md](PROJECT_ARCHITECTURE.md#state-management)
 
 ### API Integration
 

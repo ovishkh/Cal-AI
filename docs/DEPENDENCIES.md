@@ -1,8 +1,8 @@
-# FoodLens Dependencies
+# Cal AI Dependencies
 
 ## Overview
 
-This document lists all the dependencies used in the FoodLens project, their purposes, and versions.
+This document lists all the dependencies used in the Cal AI project, their purposes, and versions.
 
 ## Core Dependencies
 
@@ -44,7 +44,7 @@ provider: ^6.1.1
   - Excellent performance with Consumer widgets
 - **Documentation**: [https://pub.dev/packages/provider](https://pub.dev/packages/provider)
 
-**Example Usage in FoodLens**:
+**Example Usage in Cal AI**:
 
 ```dart
 // Creating a provider
@@ -82,7 +82,7 @@ shared_preferences: ^2.2.2
 - **Size Limit**: ~1-2MB per app
 - **Documentation**: [https://pub.dev/packages/shared_preferences](https://pub.dev/packages/shared_preferences)
 
-**Example Usage in FoodLens**:
+**Example Usage in Cal AI**:
 
 ```dart
 final prefs = await SharedPreferences.getInstance();
@@ -108,7 +108,7 @@ image_picker: ^1.0.7
 - **Platform Support**: Android, iOS, Web
 - **Documentation**: [https://pub.dev/packages/image_picker](https://pub.dev/packages/image_picker)
 
-**Example Usage in FoodLens**:
+**Example Usage in Cal AI**:
 
 ```dart
 final ImagePicker picker = ImagePicker();
@@ -137,7 +137,7 @@ http: ^1.2.0
   - Automatic gzip compression
 - **Documentation**: [https://pub.dev/packages/http](https://pub.dev/packages/http)
 
-**Example Usage in FoodLens**:
+**Example Usage in Cal AI**:
 
 ```dart
 Future<Recipe> generateRecipe(String ingredients) async {

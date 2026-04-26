@@ -1,8 +1,8 @@
-# FoodLens Configuration Guide
+# Cal AI Configuration Guide
 
 ## Overview
 
-This guide explains all configuration options in FoodLens and where to change them.
+This guide explains all configuration options in Cal AI and where to change them.
 
 ## Table of Contents
 
@@ -20,7 +20,7 @@ This guide explains all configuration options in FoodLens and where to change th
 ```dart
 class AppConstants {
   // App Information
-  static const String appName = 'FoodLens';
+  static const String appName = 'Cal AI';
   static const String appVersion = '1.0.0';
 
   // API Configuration
@@ -190,13 +190,13 @@ Map<String, dynamic> generationConfig = {
 ```kotlin
 // Update app namespace and ID
 android {
-    namespace = "com.foodlens"  // Change here
+    namespace = "com.calai"  // Change here
 
     compileSdk = 34  // Update if needed
 }
 
 defaultConfig {
-    applicationId = "com.foodlens"  // Change here
+    applicationId = "com.calai"  // Change here
     minSdk = 21                     // Minimum supported Android version
     targetSdk = 34                  // Target Android version
     versionCode = 1                 // Increment for releases
@@ -232,10 +232,10 @@ end
 
 ```yaml
 # Update app name
-name: food_lens
+name: cal_ai
 
 # Update description
-description: "FoodLens - A generative AI recipe & meal planner app."
+description: "Cal AI - A generative AI recipe & meal planner app."
 
 # Update version
 version: 1.0.0+1
@@ -262,9 +262,9 @@ class EnvironmentConfig {
   static String get apiBaseUrl {
     switch (currentEnv) {
       case Environment.dev:
-        return 'https://dev.api.foodlens.com';
+        return 'https://dev.api.calai.com';
       case Environment.prod:
-        return 'https://api.foodlens.com';
+        return 'https://api.calai.com';
     }
   }
 
@@ -308,7 +308,7 @@ class FeatureFlags {
 ### Conditional Implementation
 
 ```dart
-import 'package:food_lens/constants/app_constants.dart';
+import 'package:cal_ai/constants/app_constants.dart';
 
 if (FeatureFlags.enableVoiceInput) {
   VoiceInputWidget();
@@ -349,7 +349,7 @@ void main() {
     print('Running in Debug Mode');
   }
 
-  runApp(const FoodLensApp());
+  runApp(const Cal AIApp());
 }
 ```
 
@@ -361,7 +361,7 @@ Create `lib/services/debug_service.dart`:
 class DebugService {
   static void log(String message) {
     if (kDebugMode) {
-      debugPrint('[FoodLens] $message');
+      debugPrint('[Cal AI] $message');
     }
   }
 

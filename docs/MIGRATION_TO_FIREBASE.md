@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide provides step-by-step instructions for migrating FoodLens from local storage (SharedPreferences) to Firebase Realtime Database or Firestore.
+This guide provides step-by-step instructions for migrating Cal AI from local storage (SharedPreferences) to Firebase Realtime Database or Firestore.
 
 **Migration Path**: SharedPreferences → Firebase (Firestore or Realtime DB)
 
@@ -92,7 +92,7 @@ This guide provides step-by-step instructions for migrating FoodLens from local 
 
 1. Go to [Firebase Console](https://console.firebase.google.com)
 2. Click "Add Project"
-3. Enter project name: `foodlens`
+3. Enter project name: `calai`
 4. Choose region (closest to users)
 5. Enable Google Analytics (optional)
 6. Create project
@@ -116,7 +116,7 @@ This guide provides step-by-step instructions for migrating FoodLens from local 
 
 1. Go to **Project Settings** → **General**
 2. Click **Add App** → **Android**
-3. Enter package name: `com.foodlens`
+3. Enter package name: `com.calai`
 4. Download `google-services.json`
 5. Place in `android/app/`
 
@@ -359,8 +359,8 @@ Create `lib/providers/firebase_recipe_provider.dart`:
 
 ```dart
 import 'package:flutter/foundation.dart';
-import 'package:food_lens/models/recipe.dart';
-import 'package:food_lens/services/firebase_service.dart';
+import 'package:cal_ai/models/recipe.dart';
+import 'package:cal_ai/services/firebase_service.dart';
 
 class FirebaseRecipeProvider extends ChangeNotifier {
   final FirebaseService _firebaseService = FirebaseService();
@@ -425,16 +425,16 @@ Update `lib/main.dart`:
 
 ```dart
 import 'package:firebase_core/firebase_core.dart';
-import 'package:food_lens/config/firebase_config.dart';
+import 'package:cal_ai/config/firebase_config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await FirebaseConfig.initialize();
-  runApp(const FoodLensApp());
+  runApp(const Cal AIApp());
 }
 
-class FoodLensApp extends StatelessWidget {
-  const FoodLensApp({Key? key}) : super(key: key);
+class Cal AIApp extends StatelessWidget {
+  const Cal AIApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -592,7 +592,7 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets('Recipe sync from Firebase', (WidgetTester tester) async {
-    await tester.pumpWidget(const FoodLensApp());
+    await tester.pumpWidget(const Cal AIApp());
 
     // Wait for Firebase to load
     await tester.pumpAndSettle();

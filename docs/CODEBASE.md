@@ -1,4 +1,4 @@
-# FoodLens — Codebase Map
+# Cal AI — Codebase Map
 
 > A complete breakdown of every page, its source file, and all the code that powers it.
 

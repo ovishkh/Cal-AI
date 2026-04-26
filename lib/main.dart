@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       child: Consumer<AuthState>(
         builder: (context, authState, child) {
           return MaterialApp(
-            title: 'FoodLens',
+            title: 'Cal AI',
             theme: AppTheme.themeData,
             initialRoute: authState.isLoggedIn ? '/home' : '/login',
             routes: {

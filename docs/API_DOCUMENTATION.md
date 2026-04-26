@@ -1,8 +1,8 @@
-# FoodLens API Documentation
+# Cal AI API Documentation
 
 ## Overview
 
-FoodLens uses the **Google Gemini API** for all AI-powered features including recipe generation, meal planning, and nutritional analysis.
+Cal AI uses the **Google Gemini API** for all AI-powered features including recipe generation, meal planning, and nutritional analysis.
 
 ## Gemini API Integration
 
@@ -28,7 +28,7 @@ FoodLens uses the **Google Gemini API** for all AI-powered features including re
 2. Click "Create API Key"
 3. Copy your API key
 
-#### 3. Add API Key to FoodLens
+#### 3. Add API Key to Cal AI
 
 Create a file at `lib/config/api_keys.dart`:
 
@@ -82,7 +82,7 @@ class ApiKeys {
 }
 ```
 
-**Implementation in FoodLens**:
+**Implementation in Cal AI**:
 
 ```dart
 // File: lib/services/gemini_api.dart
@@ -342,7 +342,7 @@ curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro
   }'
 ```
 
-### Testing in FoodLens
+### Testing in Cal AI
 
 ```dart
 void testGeminiApi() async {

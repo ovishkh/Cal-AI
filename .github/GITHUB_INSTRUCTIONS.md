@@ -1,14 +1,14 @@
-# GitHub Instructions for FoodLens
+# GitHub Instructions for Cal AI
 
 ## Overview
 
-This document provides guidelines for using GitHub to contribute to and manage the FoodLens project.
+This document provides guidelines for using GitHub to contribute to and manage the Cal AI project.
 
 ## Repository Information
 
-- **Repository Name**: FoodLens
+- **Repository Name**: Cal AI
 - **Owner**: Ovi Shekh (@ovishkh)
-- **URL**: https://github.com/ovishkh/FoodLens
+- **URL**: https://github.com/ovishkh/Cal AI
 - **License**: Proprietary (Copyright © 2024 Ovi Shekh)
 
 ---
@@ -19,12 +19,12 @@ This document provides guidelines for using GitHub to contribute to and manage t
 
 ```bash
 # Using SSH
-git clone git@github.com:ovishkh/FoodLens.git
+git clone git@github.com:ovishkh/Cal AI.git
 
 # Using HTTPS
-git clone https://github.com/ovishkh/FoodLens.git
+git clone https://github.com/ovishkh/Cal AI.git
 
-cd FoodLens
+cd Cal AI
 ```
 
 ### Set Up Git Configuration
@@ -348,7 +348,7 @@ git blame <file>
 ## Repository Structure
 
 ```
-FoodLens/
+Cal AI/
 ├── .github/
 │   ├── pull_request_template.md    # PR template
 │   ├── ISSUE_TEMPLATE.md           # Issue template

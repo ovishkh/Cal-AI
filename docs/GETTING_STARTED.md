@@ -1,4 +1,4 @@
-# Getting Started with FoodLens
+# Getting Started with Cal AI
 
 ## Prerequisites
 
@@ -28,8 +28,8 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/ovishkh/FoodLens.git
-cd FoodLens
+git clone https://github.com/ovishkh/Cal AI.git
+cd Cal AI
 ```
 
 ### 2. Install Dependencies
@@ -42,7 +42,7 @@ This command reads the `pubspec.yaml` file and installs all required packages.
 
 ### 3. Get the Gemini API Key
 
-FoodLens uses the Google Gemini API for AI-powered recipe generation. You need to:
+Cal AI uses the Google Gemini API for AI-powered recipe generation. You need to:
 
 1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
 2. Create a new API key

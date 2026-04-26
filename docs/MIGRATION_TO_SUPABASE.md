@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide provides step-by-step instructions for migrating FoodLens from local storage (SharedPreferences) to Supabase (PostgreSQL + Auth).
+This guide provides step-by-step instructions for migrating Cal AI from local storage (SharedPreferences) to Supabase (PostgreSQL + Auth).
 
 **Migration Path**: SharedPreferences → Supabase
 
@@ -107,7 +107,7 @@ This guide provides step-by-step instructions for migrating FoodLens from local 
 ### Step 2: Create Project
 
 1. Click **New Project**
-2. Enter project name: `foodlens`
+2. Enter project name: `calai`
 3. Create a strong password (save it!)
 4. Choose region closest to users
 5. Click **Create new project**
@@ -132,7 +132,7 @@ Save these safely (will need for Flutter app)
 3. Enable **Google** (optional):
    - Add Google OAuth credentials
 4. Configure redirect URLs:
-   - Android: `com.foodlens://login`
+   - Android: `com.calai://login`
    - Web: `http://localhost:3000`
 
 ### Step 5: Create Database Tables
@@ -434,8 +434,8 @@ Create `lib/providers/supabase_recipe_provider.dart`:
 
 ```dart
 import 'package:flutter/foundation.dart';
-import 'package:food_lens/models/recipe.dart';
-import 'package:food_lens/services/supabase_service.dart';
+import 'package:cal_ai/models/recipe.dart';
+import 'package:cal_ai/services/supabase_service.dart';
 
 class SupabaseRecipeProvider extends ChangeNotifier {
   final SupabaseService _supabaseService = SupabaseService();
@@ -500,16 +500,16 @@ Update `lib/main.dart`:
 
 ```dart
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:food_lens/config/supabase_config.dart';
+import 'package:cal_ai/config/supabase_config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SupabaseConfig.initialize();
-  runApp(const FoodLensApp());
+  runApp(const Cal AIApp());
 }
 
-class FoodLensApp extends StatelessWidget {
-  const FoodLensApp({Key? key}) : super(key: key);
+class Cal AIApp extends StatelessWidget {
+  const Cal AIApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -738,7 +738,7 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets('Full recipe flow', (WidgetTester tester) async {
-    await tester.pumpWidget(const FoodLensApp());
+    await tester.pumpWidget(const Cal AIApp());
 
     // Sign in
     await tester.tap(find.byIcon(Icons.email));

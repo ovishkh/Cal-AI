@@ -1,8 +1,8 @@
-# FoodLens Project Architecture
+# Cal AI Project Architecture
 
 ## Overview
 
-FoodLens is built using a clean, professional architecture that follows Flutter best practices. The app is organized into layers to promote maintainability, scalability, and testability.
+Cal AI is built using a clean, professional architecture that follows Flutter best practices. The app is organized into layers to promote maintainability, scalability, and testability.
 
 ## Directory Structure
 
@@ -72,7 +72,7 @@ lib/
 
 ## State Management
 
-FoodLens uses **Provider** package for state management:
+Cal AI uses **Provider** package for state management:
 
 ```dart
 // Example: RecipeProvider

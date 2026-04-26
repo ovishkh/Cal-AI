@@ -1,4 +1,4 @@
-package com.foodlens.mobile
+package com.calai.mobile
 
 import io.flutter.embedding.android.FlutterActivity
 

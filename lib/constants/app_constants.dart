@@ -1,7 +1,7 @@
 /// Application-wide constants
 class AppConstants {
   // App Information
-  static const String appName = 'FoodLens';
+  static const String appName = 'Cal AI';
   static const String appVersion = '1.0.0';
   static const String appDescription = 'AI-powered Recipe & Meal Planner';
 
@@ -54,7 +54,7 @@ class ApiConstants {
 /// String Constants
 class StringConstants {
   // App Strings
-  static const String appTitle = 'FoodLens';
+  static const String appTitle = 'Cal AI';
   static const String appSubtitle = 'AI Recipe & Meal Planner';
 
   // Feature Names

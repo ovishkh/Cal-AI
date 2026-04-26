@@ -1,6 +1,6 @@
-# 🍳 FoodLens
+# 🍳 Cal AI
 
-**FoodLens** is an AI-powered Recipe & Meal Planner app, developed as part of the **Mobile Application Design Lab** course at **Daffodil International University**.
+**Cal AI** is an AI-powered Recipe & Meal Planner app, developed as part of the **Mobile Application Design Lab** course at **Daffodil International University**.
 
 This app leverages the **Gemini API** to generate creative recipes, analyze nutritional content
 , and deliver personalized weekly meal plans based on user preferences.
@@ -104,8 +104,8 @@ Lecturer, Daffodil International University
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/ovishkh/FoodLens.git
-   cd FoodLens
+   git clone https://github.com/ovishkh/Cal AI.git
+   cd Cal AI
    ```
 
 2. **Install dependencies**

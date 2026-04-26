@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.foodlens.mobile"
+    namespace = "com.calai.mobile"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "26.3.11579264" // Use the NDK version that's already installed
 
@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.foodlens.mobile"
+        applicationId = "com.calai.mobile"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = 23

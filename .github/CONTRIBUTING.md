@@ -1,10 +1,10 @@
-# Contributing to FoodLens
+# Contributing to Cal AI
 
-Thank you for your interest in contributing to FoodLens! We welcome contributions from everyone. This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to Cal AI! We welcome contributions from everyone. This document provides guidelines and instructions for contributing.
 
 ## Repository
 
-The main repository is hosted at: [ovishkh/FoodLens](https://github.com/ovishkh/FoodLens)
+The main repository is hosted at: [ovishkh/Cal AI](https://github.com/ovishkh/Cal AI)
 
 ## How to Contribute
 
@@ -15,8 +15,8 @@ The main repository is hosted at: [ovishkh/FoodLens](https://github.com/ovishkh/
 3. Create a new branch for your feature or fix
 
 ```bash
-git clone https://github.com/your-username/FoodLens.git
-cd FoodLens
+git clone https://github.com/your-username/Cal AI.git
+cd Cal AI
 git checkout -b feature/your-feature-name
 ```
 
@@ -80,11 +80,11 @@ We are committed to providing a welcoming and inspiring community. Please read o
 
 ## License
 
-By contributing to FoodLens, you agree that your contributions will be licensed under the same license as the project.
+By contributing to Cal AI, you agree that your contributions will be licensed under the same license as the project.
 
 ## Questions?
 
 Feel free to reach out to the maintainers 
 or create a discussion issue for questions about contributing.
 
-Thank you for contributing to FoodLens!
+Thank you for contributing to Cal AI!

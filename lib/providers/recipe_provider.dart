@@ -1,13 +1,13 @@
 /// Example Provider for Recipe Management
 /// 
-/// This is an example of how to structure providers in FoodLens.
+/// This is an example of how to structure providers in Cal AI.
 /// Copy and modify this template for your own providers.
 
 import 'package:flutter/foundation.dart';
 
 // Uncomment when ready to use:
-// import 'package:food_lens/models/recipe.dart';
-// import 'package:food_lens/services/gemini_api.dart';
+// import 'package:cal_ai/models/recipe.dart';
+// import 'package:cal_ai/services/gemini_api.dart';
 
 /// Example Recipe Provider
 /// 

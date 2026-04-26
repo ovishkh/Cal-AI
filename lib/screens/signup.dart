@@ -79,7 +79,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 16),
                 const Text(
-                  'Join FoodLens',
+                  'Join Cal AI',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 28,

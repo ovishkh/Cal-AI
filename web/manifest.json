@@ -1,6 +1,6 @@
 {
-    "name": "FoodLens",
-    "short_name": "FoodLens",
+    "name": "Cal AI",
+    "short_name": "Cal AI",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

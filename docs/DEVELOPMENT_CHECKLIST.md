@@ -1,4 +1,4 @@
-# FoodLens Development Checklist
+# Cal AI Development Checklist
 
 Use this checklist to ensure everything is properly configured before pushing to GitHub or starting active development.
 
@@ -99,20 +99,20 @@ Use this checklist to ensure everything is properly configured before pushing to
 
 ### Android Configuration
 
-- [ ] `android/app/build.gradle.kts` namespace: `com.foodlens`
-- [ ] `android/app/build.gradle.kts` app ID: `com.foodlens`
-- [ ] `android/app/src/main/kotlin/com/foodlens/MainActivity.kt` exists
-- [ ] Old `com.example.food_lens_app` directory removed
+- [ ] `android/app/build.gradle.kts` namespace: `com.calai`
+- [ ] `android/app/build.gradle.kts` app ID: `com.calai`
+- [ ] `android/app/src/main/kotlin/com/calai/MainActivity.kt` exists
+- [ ] Old `com.example.cal_ai_app` directory removed
 
 ### Web Configuration
 
-- [ ] `web/index.html` title: "FoodLens"
-- [ ] `web/manifest.json` names: "FoodLens"
+- [ ] `web/index.html` title: "Cal AI"
+- [ ] `web/manifest.json` names: "Cal AI"
 
 ### Dart/Flutter Configuration
 
-- [ ] `pubspec.yaml` package name: `food_lens`
-- [ ] `pubspec.yaml` description mentions FoodLens
+- [ ] `pubspec.yaml` package name: `cal_ai`
+- [ ] `pubspec.yaml` description mentions Cal AI
 - [ ] `test/widget_test.dart` imports correct package
 
 ---
@@ -165,7 +165,7 @@ Use this checklist to ensure everything is properly configured before pushing to
 ### GitHub Repository
 
 - [ ] GitHub account created/verified
-- [ ] Repository created at `ovishkh/FoodLens`
+- [ ] Repository created at `ovishkh/Cal AI`
 - [ ] Repository is empty (no README, .gitignore, LICENSE)
 - [ ] Branch name verified: `main` or `master`
 - [ ] Repository description set
@@ -173,7 +173,7 @@ Use this checklist to ensure everything is properly configured before pushing to
 
 ### Remote Configuration
 
-- [ ] Remote added: `git remote add origin https://github.com/ovishkh/FoodLens.git`
+- [ ] Remote added: `git remote add origin https://github.com/ovishkh/Cal AI.git`
 - [ ] Remote verified: `git remote -v`
 
 ---

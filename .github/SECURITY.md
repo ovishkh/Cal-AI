@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-We are committed to maintaining the security and integrity of FoodLens. If you discover a security vulnerability, please report it responsibly by emailing security@foodlens.ai or reaching out to the maintainers.
+We are committed to maintaining the security and integrity of Cal AI. If you discover a security vulnerability, please report it responsibly by emailing security@calai.ai or reaching out to the maintainers.
 
 ### Guidelines for Reporting Security Issues:
 
@@ -22,7 +22,7 @@ Currently supported versions that receive security updates:
 
 ## Security Considerations
 
-When using FoodLens, please be aware of the following security recommendations:
+When using Cal AI, please be aware of the following security recommendations:
 
 - Keep your Flutter SDK and dependencies updated
 - Use the latest version of the application
@@ -37,4 +37,4 @@ We aim to:
 - Investigate and respond within 5 business days
 - Release patches for confirmed vulnerabilities as quickly as possible
 
-Thank you for helping keep FoodLens secure!
+Thank you for helping keep Cal AI secure!

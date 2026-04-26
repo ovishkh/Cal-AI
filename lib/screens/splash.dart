@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
               const SizedBox(height: 20),
               // App name
               const Text(
-                'FoodLens',
+                'Cal AI',
                 style: TextStyle(
                   fontSize: 34,
                   fontWeight: FontWeight.bold,
