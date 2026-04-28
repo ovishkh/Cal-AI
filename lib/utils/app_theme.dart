@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   // Color palette
-  static const Color primaryColor = Color(0xFFE65100); // Deep orange
-  static const Color primaryLight = Color(0xFFFF8A50);
-  static const Color primaryDark = Color(0xFFAC1900);
-  static const Color accentColor = Color(0xFF26A69A); // Teal accent
-  static const Color backgroundColor = Color(0xFFFAFAFA);
-  static const Color cardColor = Colors.white;
-  static const Color textPrimary = Color(0xFF212121);
-  static const Color textSecondary = Color(0xFF757575);
-  static const Color dividerColor = Color(0xFFEEEEEE);
+  static const Color primaryColor = Color(0xFF000000); // Black
+  static const Color primaryLight = Color(0xFF333333);
+  static const Color primaryDark = Color(0xFF000000);
+  static const Color accentColor = Color(0xFF000000); // Black accent
+  static const Color backgroundColor = Color(0xFF000000); // Pure black background
+  static const Color cardColor = Color(0xFF1E1E1E); // Dark grey cards
+  static const Color textPrimary = Colors.white;
+  static const Color textSecondary = Colors.white70;
+  static const Color dividerColor = Color(0xFF333333);
 
   // Gradients
   static const LinearGradient primaryGradient = LinearGradient(
@@ -20,7 +20,7 @@ class AppTheme {
   );
 
   static const LinearGradient accentGradient = LinearGradient(
-    colors: [accentColor, Color(0xFF80CBC4)],
+    colors: [accentColor, Color(0xFF444444)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
@@ -29,7 +29,7 @@ class AppTheme {
   static const TextStyle headingLarge = TextStyle(
     fontSize: 28,
     fontWeight: FontWeight.bold,
-    color: primaryColor,
+    color: textPrimary,
     letterSpacing: 0.5,
   );
 
@@ -75,8 +75,8 @@ class AppTheme {
 
   // Button styles
   static ButtonStyle primaryButtonStyle = ElevatedButton.styleFrom(
-    backgroundColor: primaryColor,
-    foregroundColor: Colors.white,
+    backgroundColor: Colors.white,
+    foregroundColor: Colors.black,
     elevation: 2,
     padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -88,13 +88,13 @@ class AppTheme {
   );
 
   static ButtonStyle secondaryButtonStyle = ElevatedButton.styleFrom(
-    backgroundColor: Colors.white,
-    foregroundColor: primaryColor,
+    backgroundColor: Color(0xFF2C2C2C),
+    foregroundColor: Colors.white,
     elevation: 1,
     padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(12),
-      side: BorderSide(color: primaryColor.withOpacity(0.5)),
+      side: BorderSide(color: Colors.white10),
     ),
     textStyle: const TextStyle(
       fontWeight: FontWeight.bold,
@@ -120,7 +120,7 @@ class AppTheme {
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: primaryColor, width: 2),
+        borderSide: const BorderSide(color: Colors.white, width: 2),
       ),
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
     );

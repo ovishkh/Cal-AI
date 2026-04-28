@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // Prevent back button from working on splash screen
       onWillPop: () async => false,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

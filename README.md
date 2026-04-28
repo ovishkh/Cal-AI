@@ -2,6 +2,8 @@
 
 **Cal AI** is an AI-powered Recipe & Meal Planner app, developed as part of the **Mobile Application Design Lab** course at **Daffodil International University**.
 
+The app features a **premium black aesthetic**, inspired by the sleek design of [calai.app](https://www.calai.app/), providing a modern and professional user experience.
+
 This app leverages the **Gemini API** to generate creative recipes, analyze nutritional content
 , and deliver personalized weekly meal plans based on user preferences.
 

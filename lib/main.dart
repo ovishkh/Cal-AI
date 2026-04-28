@@ -155,7 +155,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen>
               offset: const Offset(0, -2),
             ),
           ],
-          color: Colors.white,
+          color: AppTheme.cardColor,
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -168,10 +168,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen>
           ),
           child: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.white,
+            backgroundColor: AppTheme.cardColor,
             currentIndex: _selectedIndex,
             selectedItemColor: AppTheme.primaryColor,
-            unselectedItemColor: Colors.grey.shade400,
+            unselectedItemColor: Colors.white38,
             selectedLabelStyle: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 12,
