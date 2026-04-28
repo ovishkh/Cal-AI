@@ -339,11 +339,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   );
                                   appState.setSelectedRecipe(recipe);
 
-                                  // Navigate to the Home tab (index 0)
+                                  // Navigate to the Recipes tab (index 2)
                                   Provider.of<TabNavigationState>(
                                     context,
                                     listen: false,
-                                  ).changeTab(0);
+                                  ).changeTab(2);
                                 },
                               );
                             },

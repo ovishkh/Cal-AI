@@ -50,6 +50,11 @@ class MyApp extends StatelessWidget {
               '/calorie_ai':
                   (context) =>
                       authState.isLoggedIn
+                          ? const MainNavigationScreen(initialIndex: 0)
+                          : const LoginRedirect(),
+              '/recipes':
+                  (context) =>
+                      authState.isLoggedIn
                           ? const MainNavigationScreen(initialIndex: 2)
                           : const LoginRedirect(),
               '/profile':
@@ -117,9 +122,9 @@ class _MainNavigationScreenState extends State<MainNavigationScreen>
   }
 
   static const List<Widget> _screens = [
-    HomeScreen(),
-    PlannerScreen(),
     CalorieAIScreen(),
+    PlannerScreen(),
+    HomeScreen(),
     ProfileScreen(),
   ];
 
@@ -174,16 +179,6 @@ class _MainNavigationScreenState extends State<MainNavigationScreen>
             unselectedLabelStyle: const TextStyle(fontSize: 11),
             elevation: 0,
             items: [
-              const BottomNavigationBarItem(
-                icon: Icon(Icons.restaurant_menu),
-                activeIcon: Icon(Icons.restaurant_menu, size: 28),
-                label: 'Recipes',
-              ),
-              const BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_month),
-                activeIcon: Icon(Icons.calendar_month, size: 28),
-                label: 'Planner',
-              ),
               BottomNavigationBarItem(
                 icon: Stack(
                   alignment: Alignment.center,
@@ -195,7 +190,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen>
                       margin: const EdgeInsets.only(top: 40),
                       decoration: BoxDecoration(
                         color:
-                            _selectedIndex == 2
+                            _selectedIndex == 0
                                 ? AppTheme.primaryColor
                                 : Colors.transparent,
                         borderRadius: BorderRadius.circular(10),
@@ -223,6 +218,16 @@ class _MainNavigationScreenState extends State<MainNavigationScreen>
                   ],
                 ),
                 label: 'CalorieAI',
+              ),
+              const BottomNavigationBarItem(
+                icon: Icon(Icons.calendar_month),
+                activeIcon: Icon(Icons.calendar_month, size: 28),
+                label: 'Planner',
+              ),
+              const BottomNavigationBarItem(
+                icon: Icon(Icons.restaurant_menu),
+                activeIcon: Icon(Icons.restaurant_menu, size: 28),
+                label: 'Recipes',
               ),
               BottomNavigationBarItem(
                 icon: Stack(
