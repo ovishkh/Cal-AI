@@ -27,18 +27,14 @@ lib/
 │   ├── calorie_ai.dart
 │   ├── profile.dart
 │   └── about.dart
-├── services/                    # Business logic & API calls
-│   └── gemini_api.dart         # Gemini API service
-├── widgets/                     # Reusable UI components
-│   ├── nutrition_card.dart
-│   ├── nutrition_chart.dart
-│   └── recipe_card.dart
-├── utils/                       # Utility functions
-│   ├── app_theme.dart
-│   └── helpers.dart
-└── providers/                   # State Management (Provider)
-    ├── recipe_provider.dart
-    └── meal_plan_provider.dart
+├── controllers/          # State Management (GetX)
+│   ├── auth_controller.dart
+│   ├── app_controller.dart
+│   └── navigation_controller.dart
+└── services/             # Business logic & API calls
+    ├── gemini_api.dart         # Gemini API service
+    ├── firebase_auth_service.dart
+    └── firestore_service.dart
 ```
 
 ## Architecture Layers
@@ -50,12 +46,12 @@ lib/
 - **Key Classes**: Stateful/Stateless widgets, screens
 - **Example**: `HomeScreen`, `RecipeCard`
 
-### 2. **Business Logic Layer** (Providers & Services)
+### 2. **Logic Layer** (Controllers & Services)
 
-- **Location**: `lib/providers/`, `lib/services/`
-- **Responsibility**: State management and business logic
-- **Key Classes**: ChangeNotifier providers, API services
-- **Example**: `RecipeProvider`, `GeminiApiService`
+- **Location**: `lib/controllers/`, `lib/services/`
+- **Responsibility**: Reactive state management and external service interactions
+- **Key Classes**: GetxController, Firebase services, API services
+- **Example**: `AuthController`, `AppController`, `GeminiApiService`
 
 ### 3. **Data Layer** (Models & Services)
 
@@ -70,21 +66,16 @@ lib/
 - **Responsibility**: App configuration and app-wide constants
 - **Key Files**: Theme settings, API endpoints, constants
 
-## State Management
-
-Cal AI uses **Provider** package for state management:
+Cal AI uses **GetX** for state management, providing a reactive and decoupled architecture:
 
 ```dart
-// Example: RecipeProvider
-class RecipeProvider extends ChangeNotifier {
-  List<Recipe> _recipes = [];
+// Example: AppController
+class AppController extends GetxController {
+  final Rxn<Recipe> _selectedRecipe = Rxn<Recipe>();
+  Recipe? get selectedRecipe => _selectedRecipe.value;
 
-  List<Recipe> get recipes => _recipes;
-
-  Future<void> generateRecipe(String ingredients) async {
-    // Call API
-    // Update _recipes
-    notifyListeners();
+  void setSelectedRecipe(Recipe recipe) {
+    _selectedRecipe.value = recipe;
   }
 }
 ```
@@ -94,15 +85,10 @@ class RecipeProvider extends ChangeNotifier {
 ```dart
 @override
 Widget build(BuildContext context) {
-  return Consumer<RecipeProvider>(
-    builder: (context, recipeProvider, child) {
-      return ListView(
-        children: recipeProvider.recipes
-            .map((recipe) => RecipeCard(recipe: recipe))
-            .toList(),
-      );
-    },
-  );
+  return Obx(() {
+    final controller = Get.find<AppController>();
+    return RecipeCard(recipe: controller.selectedRecipe);
+  });
 }
 ```
 
@@ -115,7 +101,7 @@ Widget build(BuildContext context) {
        │
        ▼
 ┌─────────────────┐
-│ Provider/Event  │ (Handle state)
+│ GetxController  │ (Manage state)
 └──────┬──────────┘
        │
        ▼
@@ -226,10 +212,10 @@ class NutritionInfo {
 
 ## Design Patterns Used
 
-1. **Provider Pattern**: For state management
-2. **Singleton Pattern**: For API service and local storage
-3. **Factory Pattern**: For creating providers
-4. **Observer Pattern**: Through Provider's ChangeNotifier
+1. **GetX Pattern**: For state and route management
+2. **Repository Pattern**: Abstracting data sources (Firestore, Gemini)
+3. **Singleton Pattern**: For services and controller initialization
+4. **Reactive Pattern**: Using `Obx` and `Rx` types for UI updates
 5. **Strategy Pattern**: For different recipe generation modes (text, voice, image)
 
 ## Best Practices
@@ -243,9 +229,7 @@ class NutritionInfo {
 
 ## Future Improvements
 
-- Implement cloud database (Firebase Firestore)
-- Add offline capabilities
-- Implement caching strategies
-- Add more sophisticated error handling
-- Add unit and widget tests
-- Implement dependency injection
+- Add offline capabilities with local caching
+- Implement background sync for recipes
+- Add comprehensive unit and widget tests
+- Enhance security rules in Firestore
