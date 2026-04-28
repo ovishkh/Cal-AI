@@ -23,31 +23,36 @@ class _LoginScreenState extends State<LoginScreen> {
         _isLoading = true;
       });
 
-      // Mock API call with delay
-      await Future.delayed(const Duration(seconds: 2));
+      try {
+        final email = _emailController.text.trim();
+        final password = _passwordController.text;
 
-      // Mock credentials check
-      final email = _emailController.text.trim();
-      final password = _passwordController.text;
-
-      setState(() {
-        _isLoading = false;
-      });
-
-      if (email == 'ovi@gmail.com' && password == 'password') {
-        // Set the auth state to logged in
-        Provider.of<AuthState>(context, listen: false).login();
-
-        // Navigate to home screen
-        Navigator.pushReplacementNamed(context, '/home');
-      } else {
-        // Show error message
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Invalid email or password'),
-            backgroundColor: Colors.red,
-          ),
+        // Use the auth state to login via Firebase
+        await Provider.of<AuthState>(context, listen: false).loginWithEmail(
+          email,
+          password,
         );
+
+        if (mounted) {
+          setState(() {
+            _isLoading = false;
+          });
+          // Navigate to home screen
+          Navigator.pushReplacementNamed(context, '/home');
+        }
+      } catch (e) {
+        if (mounted) {
+          setState(() {
+            _isLoading = false;
+          });
+          // Show error message
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Login failed: ${e.toString()}'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
       }
     }
   }

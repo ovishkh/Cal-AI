@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../utils/app_theme.dart';
+import '../main.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -24,23 +26,45 @@ class _SignupScreenState extends State<SignupScreen> {
         _isLoading = true;
       });
 
-      // Mock API call with delay
-      await Future.delayed(const Duration(seconds: 2));
+      try {
+        final email = _emailController.text.trim();
+        final password = _passwordController.text;
 
-      setState(() {
-        _isLoading = false;
-      });
+        // Use the auth state to sign up via Firebase
+        await Provider.of<AuthState>(context, listen: false).signupWithEmail(
+          email,
+          password,
+        );
 
-      // Show success message
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Account created successfully!'),
-          backgroundColor: Colors.green,
-        ),
-      );
+        if (mounted) {
+          setState(() {
+            _isLoading = false;
+          });
+          // Show success message
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Account created successfully!'),
+              backgroundColor: Colors.green,
+            ),
+          );
 
-      // Navigate to login
-      Navigator.pop(context);
+          // Navigate back to login or home (AuthState listener will handle redirection if needed)
+          Navigator.pop(context);
+        }
+      } catch (e) {
+        if (mounted) {
+          setState(() {
+            _isLoading = false;
+          });
+          // Show error message
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Signup failed: ${e.toString()}'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }
     }
   }
 

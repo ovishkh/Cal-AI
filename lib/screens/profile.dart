@@ -125,45 +125,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             const SizedBox(width: 20),
                             Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text(
-                                    'Ovi Shekh',
-                                    style: TextStyle(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 4),
-                                  const Text(
-                                    'ovi@gmail.com',
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      color: Colors.white70,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 12,
-                                      vertical: 6,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white24,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Text(
-                                      'Recipes: $_recipeCount',
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
+                              child: Consumer<AuthState>(
+                                builder: (context, authState, child) {
+                                  final user = authState.user;
+                                  return Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        user?.displayName ?? 'Cal AI User',
+                                        style: const TextStyle(
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    ),
-                                  ),
-                                ],
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        user?.email ?? 'No email',
+                                        style: const TextStyle(
+                                          fontSize: 13,
+                                          color: Colors.white70,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 12,
+                                          vertical: 6,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white24,
+                                          borderRadius: BorderRadius.circular(20),
+                                        ),
+                                        child: Text(
+                                          'Recipes: $_recipeCount',
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
                               ),
                             ),
                           ],
@@ -177,12 +182,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         width: double.infinity,
                         height: 50,
                         child: ElevatedButton.icon(
-                          onPressed: () {
-                            Provider.of<AuthState>(
+                          onPressed: () async {
+                            await Provider.of<AuthState>(
                               context,
                               listen: false,
                             ).logout();
-                            Navigator.pushReplacementNamed(context, '/login');
+                            if (mounted) {
+                              Navigator.pushReplacementNamed(context, '/login');
+                            }
                           },
                           icon: const Icon(Icons.logout),
                           label: const Text(

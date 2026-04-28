@@ -11,8 +11,20 @@ import 'screens/signup.dart';
 import 'services/gemini_api.dart';
 import 'utils/app_theme.dart';
 import 'models/recipe.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'firebase_options.dart';
+import 'services/firebase_auth_service.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (e) {
+    debugPrint("Firebase initialization failed: $e");
+  }
   runApp(const MyApp());
 }
 
@@ -323,15 +335,44 @@ class TabNavigationState extends ChangeNotifier {
 // Authentication state provider
 class AuthState extends ChangeNotifier {
   bool _isLoggedIn = false;
+  User? _user;
+  final FirebaseAuthService _authService = FirebaseAuthService();
+
+  AuthState() {
+    // Listen to Firebase Auth state changes
+    _authService.authStateChanges.listen((User? user) {
+      _user = user;
+      _isLoggedIn = user != null;
+      notifyListeners();
+    });
+  }
 
   bool get isLoggedIn => _isLoggedIn;
+  User? get user => _user;
+
+  Future<void> loginWithEmail(String email, String password) async {
+    try {
+      await _authService.signIn(email: email, password: password);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> signupWithEmail(String email, String password) async {
+    try {
+      await _authService.signUp(email: email, password: password);
+    } catch (e) {
+      rethrow;
+    }
+  }
 
   void login() {
     _isLoggedIn = true;
     notifyListeners();
   }
 
-  void logout() {
+  Future<void> logout() async {
+    await _authService.signOut();
     _isLoggedIn = false;
     notifyListeners();
   }

@@ -47,6 +47,11 @@ dependencies:
   # HTTP requests for API calls
   http: ^1.2.0
 
+  # Firebase
+  firebase_core: ^3.11.0
+  firebase_auth: ^5.5.0
+  cloud_firestore: ^5.6.3
+
   # PDF generation (importing but not actively using to avoid build issues)
   pdf: ^3.11.3
   printing: ^5.11.1
