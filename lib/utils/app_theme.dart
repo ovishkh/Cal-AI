@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   // Color palette
@@ -26,34 +27,34 @@ class AppTheme {
   );
 
   // Text styles
-  static const TextStyle headingLarge = TextStyle(
+  static final TextStyle headingLarge = GoogleFonts.outfit(
     fontSize: 28,
     fontWeight: FontWeight.bold,
     color: textPrimary,
     letterSpacing: 0.5,
   );
 
-  static const TextStyle headingMedium = TextStyle(
+  static final TextStyle headingMedium = GoogleFonts.outfit(
     fontSize: 22,
     fontWeight: FontWeight.bold,
     color: textPrimary,
     letterSpacing: 0.3,
   );
 
-  static final TextStyle headingSmall = TextStyle(
+  static final TextStyle headingSmall = GoogleFonts.outfit(
     fontSize: 18,
     fontWeight: FontWeight.w600,
     color: textPrimary.withOpacity(0.9),
     letterSpacing: 0.2,
   );
 
-  static final TextStyle bodyText = TextStyle(
+  static final TextStyle bodyText = GoogleFonts.inter(
     fontSize: 16,
     color: textPrimary.withOpacity(0.8),
     height: 1.5,
   );
 
-  static final TextStyle caption = TextStyle(
+  static final TextStyle caption = GoogleFonts.inter(
     fontSize: 14,
     color: textSecondary,
     fontWeight: FontWeight.w500,
@@ -146,11 +147,10 @@ class AppTheme {
       foregroundColor: Colors.white,
       elevation: 0,
     ),
-    textTheme: const TextTheme(
+    textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme).copyWith(
       headlineLarge: headingLarge,
       headlineMedium: headingMedium,
     ),
-    fontFamily: 'Roboto',
     useMaterial3: true,
   );
 }
