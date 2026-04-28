@@ -11,6 +11,10 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserdata
 
 # IntelliJ related
 *.iml
@@ -50,3 +54,14 @@ lib/config/api_keys.dart
 .env.local
 lib/config/*.key
 lib/config/*.secret
+
+# Firebase configuration
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+lib/firebase_options.dart
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
