@@ -4,7 +4,7 @@ Thank you for your interest in contributing to Cal AI! We welcome contributions 
 
 ## Repository
 
-The main repository is hosted at: [ovishkh/Cal AI](https://github.com/ovishkh/Cal AI)
+The main repository is hosted at: [ovishkh/Cal-AI](https://github.com/ovishkh/Cal-AI)
 
 ## How to Contribute
 
@@ -15,22 +15,31 @@ The main repository is hosted at: [ovishkh/Cal AI](https://github.com/ovishkh/Ca
 3. Create a new branch for your feature or fix
 
 ```bash
-git clone https://github.com/your-username/Cal AI.git
-cd Cal AI
+git clone https://github.com/your-username/Cal-AI.git
+cd Cal-AI
 git checkout -b feature/your-feature-name
 ```
 
 ### Development Setup
 
 1. Ensure you have Flutter installed (version 3.7.2 or higher)
-2. Install dependencies:
+2. Setup Firebase:
+   - Ensure you have the FlutterFire CLI installed
+   - Run `flutterfire configure` to set up your local Firebase options
+3. Install dependencies:
    ```bash
    flutter pub get
    ```
-3. Run the app:
+4. Run the app:
    ```bash
    flutter run
    ```
+
+### State Management
+We use **GetX** for state management. When adding new features:
+- Create a new `GetxController` in `lib/controllers/`
+- Use `Obx` or `GetBuilder` for reactive UI updates
+- Utilize `Get.find()` for dependency injection
 
 ### Making Changes
 

@@ -26,7 +26,7 @@ For detailed documentation on setup, architecture, dependencies, and configurati
 ### ✅ Login / Sign-Up
 
 - Secure authentication for personalized access.
-- Firebase Authentication (Currently used mock signup and login; as it was showing errors)
+- Firebase Authentication (Fully integrated for login and signup)
 
 ---
 
@@ -75,12 +75,13 @@ For detailed documentation on setup, architecture, dependencies, and configurati
 
 | Technology        | Usage                                          |
 | ----------------- | ---------------------------------------------- |
-| Flutter           | UI Development                                 |
-| Provider          | State Management                               |
-| SharedPreferences | Local Storage                                  |
-| Gemini API        | AI Recipe, Meal Plan, and Nutrition Generation |
-| Image Picker      | Camera / Gallery Integration                   |
-| Printing Package  | PDF Meal Plan Export                           |
+| GetX              | State Management                               |
+| Firebase Auth      | User Authentication                            |
+| Cloud Firestore    | User Profiles & Recipe Persistence             |
+| SharedPreferences  | Local Settings Storage                         |
+| Gemini API         | AI Recipe, Meal Plan, and Nutrition Generation |
+| Image Picker       | Camera / Gallery Integration                   |
+| Printing Package   | PDF Meal Plan Export                           |
 
 ---
 
@@ -105,10 +106,10 @@ Lecturer, Daffodil International University
 
 1. **Clone the repository**
 
-   ```bash
-   git clone https://github.com/ovishkh/Cal AI.git
-   cd Cal AI
-   ```
+    ```bash
+    git clone https://github.com/ovishkh/Cal-AI.git
+    cd Cal-AI
+    ```
 
 2. **Install dependencies**
 
@@ -143,11 +144,11 @@ lib/
 ├── main.dart
 ├── config/               # Configuration & API keys
 ├── constants/            # App-wide constants
+├── controllers/          # GetX Controllers (State Management)
 ├── models/               # Data models
 ├── screens/              # UI screens
-├── services/             # API services
+├── services/             # API & Firebase services
 ├── widgets/              # Reusable widgets
-├── providers/            # State management
 └── utils/                # Utilities
 ```
 
@@ -158,7 +159,7 @@ See [PROJECT_ARCHITECTURE.md](docs/PROJECT_ARCHITECTURE.md) for details.
 ## ⚠️ Notes
 
 - 🎯 This is a **student project** designed for **Android devices only**.
-- ☁️ Currently **no cloud-based database** — uses local storage.
+- ☁️ **Cloud Database:** Integrated with **Firebase Firestore** for persistent storage.
 - 🔒 API keys are securely handled and **never hardcoded** in the repository...
 - 📁 Professional project structure with organized folders and documentation.
 - 🛠️ Ready for production development and team collaboration.
