@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 import '../utils/app_theme.dart';
-import '../main.dart';
+import '../controllers/auth_controller.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -31,7 +31,7 @@ class _SignupScreenState extends State<SignupScreen> {
         final password = _passwordController.text;
 
         // Use the auth state to sign up via Firebase
-        await Provider.of<AuthState>(context, listen: false).signupWithEmail(
+        await Get.find<AuthController>().signupWithEmail(
           email,
           password,
         );
@@ -48,8 +48,8 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
           );
 
-          // Navigate back to login or home (AuthState listener will handle redirection if needed)
-          Navigator.pop(context);
+          // Navigate back to login
+          Get.back();
         }
       } catch (e) {
         if (mounted) {
@@ -328,7 +328,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                           TextButton(
                             onPressed: () {
-                              Navigator.pop(context);
+                              Get.back();
                             },
                             child: const Text(
                               'Sign In',

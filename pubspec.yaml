@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
 
   # State management
-  provider: ^6.1.1
+  get: ^4.6.6
 
   # Local storage for recipes
   shared_preferences: ^2.2.2

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
+import 'controllers/auth_controller.dart';
+import 'controllers/app_controller.dart';
+import 'controllers/navigation_controller.dart';
 import 'screens/splash.dart';
 import 'screens/home.dart';
 import 'screens/planner.dart';
@@ -33,58 +36,72 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => AppState()),
-        ChangeNotifierProvider(create: (context) => TabNavigationState()),
-        ChangeNotifierProvider(create: (context) => AuthState()),
-      ],
-      child: Consumer<AuthState>(
-        builder: (context, authState, child) {
-          return MaterialApp(
-            title: 'Cal AI',
-            theme: AppTheme.themeData,
-            initialRoute: authState.isLoggedIn ? '/home' : '/login',
-            routes: {
-              '/': (context) => const SplashScreen(),
-              '/login': (context) => const LoginScreen(),
-              '/signup': (context) => const SignupScreen(),
-              '/home':
-                  (context) =>
-                      authState.isLoggedIn
-                          ? const MainNavigationScreen(initialIndex: 0)
-                          : const LoginRedirect(),
-              '/planner':
-                  (context) =>
-                      authState.isLoggedIn
-                          ? const MainNavigationScreen(initialIndex: 1)
-                          : const LoginRedirect(),
-              '/calorie_ai':
-                  (context) =>
-                      authState.isLoggedIn
-                          ? const MainNavigationScreen(initialIndex: 0)
-                          : const LoginRedirect(),
-              '/recipes':
-                  (context) =>
-                      authState.isLoggedIn
-                          ? const MainNavigationScreen(initialIndex: 2)
-                          : const LoginRedirect(),
-              '/profile':
-                  (context) =>
-                      authState.isLoggedIn
-                          ? const MainNavigationScreen(initialIndex: 3)
-                          : const LoginRedirect(),
-              '/about':
-                  (context) =>
-                      authState.isLoggedIn
-                          ? const AboutScreen()
-                          : const LoginRedirect(),
-            },
-            debugShowCheckedModeBanner: false,
-          );
-        },
-      ),
-    );
+    // Inject controllers
+    final authController = Get.put(AuthController());
+    Get.put(AppController());
+    Get.put(NavigationController());
+
+    return Obx(() {
+      return GetMaterialApp(
+        title: 'Cal AI',
+        theme: AppTheme.themeData,
+        initialRoute: authController.isLoggedIn ? '/home' : '/login',
+        getPages: [
+          GetPage(name: '/', page: () => const SplashScreen()),
+          GetPage(name: '/login', page: () => const LoginScreen()),
+          GetPage(name: '/signup', page: () => const SignupScreen()),
+          GetPage(
+            name: '/home',
+            page:
+                () =>
+                    authController.isLoggedIn
+                        ? const MainNavigationScreen(initialIndex: 0)
+                        : const LoginRedirect(),
+          ),
+          GetPage(
+            name: '/planner',
+            page:
+                () =>
+                    authController.isLoggedIn
+                        ? const MainNavigationScreen(initialIndex: 1)
+                        : const LoginRedirect(),
+          ),
+          GetPage(
+            name: '/calorie_ai',
+            page:
+                () =>
+                    authController.isLoggedIn
+                        ? const MainNavigationScreen(initialIndex: 0)
+                        : const LoginRedirect(),
+          ),
+          GetPage(
+            name: '/recipes',
+            page:
+                () =>
+                    authController.isLoggedIn
+                        ? const MainNavigationScreen(initialIndex: 2)
+                        : const LoginRedirect(),
+          ),
+          GetPage(
+            name: '/profile',
+            page:
+                () =>
+                    authController.isLoggedIn
+                        ? const MainNavigationScreen(initialIndex: 3)
+                        : const LoginRedirect(),
+          ),
+          GetPage(
+            name: '/about',
+            page:
+                () =>
+                    authController.isLoggedIn
+                        ? const AboutScreen()
+                        : const LoginRedirect(),
+          ),
+        ],
+        debugShowCheckedModeBanner: false,
+      );
+    });
   }
 }
 
@@ -118,19 +135,17 @@ class _MainNavigationScreenState extends State<MainNavigationScreen>
         });
       }
     });
-  }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    // Listen to TabNavigationState changes
-    final tabState = Provider.of<TabNavigationState>(context);
-    if (_selectedIndex != tabState.currentIndex) {
-      setState(() {
-        _selectedIndex = tabState.currentIndex;
-        _tabController.animateTo(_selectedIndex);
-      });
-    }
+    // Listen to NavigationController changes
+    final navService = Get.find<NavigationController>();
+    ever(navService.currentIndex.obs, (int index) {
+      if (_selectedIndex != index) {
+        setState(() {
+          _selectedIndex = index;
+          _tabController.animateTo(_selectedIndex);
+        });
+      }
+    });
   }
 
   static const List<Widget> _screens = [
@@ -141,8 +156,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen>
   ];
 
   void _onItemTapped(int index) {
-    final tabState = Provider.of<TabNavigationState>(context, listen: false);
-    tabState.changeTab(index);
+    Get.find<NavigationController>().changeTab(index);
 
     setState(() {
       _selectedIndex = index;
@@ -296,89 +310,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen>
   }
 }
 
-// Simple app state provider
-class AppState extends ChangeNotifier {
-  int _recipeCount = 0;
-  Recipe? _selectedRecipe;
-
-  int get recipeCount => _recipeCount;
-  Recipe? get selectedRecipe => _selectedRecipe;
-
-  void incrementRecipeCount() {
-    _recipeCount++;
-    notifyListeners();
-  }
-
-  void setSelectedRecipe(Recipe recipe) {
-    _selectedRecipe = recipe;
-    notifyListeners();
-  }
-
-  void clearSelectedRecipe() {
-    _selectedRecipe = null;
-    notifyListeners();
-  }
-}
-
-// Tab navigation state provider
-class TabNavigationState extends ChangeNotifier {
-  int _currentIndex = 0;
-
-  int get currentIndex => _currentIndex;
-
-  void changeTab(int index) {
-    _currentIndex = index;
-    notifyListeners();
-  }
-}
-
-// Authentication state provider
-class AuthState extends ChangeNotifier {
-  bool _isLoggedIn = false;
-  User? _user;
-  final FirebaseAuthService _authService = FirebaseAuthService();
-
-  AuthState() {
-    // Listen to Firebase Auth state changes
-    _authService.authStateChanges.listen((User? user) {
-      _user = user;
-      _isLoggedIn = user != null;
-      notifyListeners();
-    });
-  }
-
-  bool get isLoggedIn => _isLoggedIn;
-  User? get user => _user;
-
-  Future<void> loginWithEmail(String email, String password) async {
-    try {
-      await _authService.signIn(email: email, password: password);
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<void> signupWithEmail(String email, String password) async {
-    try {
-      await _authService.signUp(email: email, password: password);
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  void login() {
-    _isLoggedIn = true;
-    notifyListeners();
-  }
-
-  Future<void> logout() async {
-    await _authService.signOut();
-    _isLoggedIn = false;
-    notifyListeners();
-  }
-}
-
-// Redirect widget for unauthenticated access attempts
+// AuthRedirect widget for unauthenticated access attempts
 class LoginRedirect extends StatefulWidget {
   const LoginRedirect({super.key});
 
@@ -392,7 +324,7 @@ class _LoginRedirectState extends State<LoginRedirect> {
     super.initState();
     // Redirect to login after frame is built
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Navigator.of(context).pushReplacementNamed('/login');
+      Get.offAllNamed('/login');
     });
   }
 

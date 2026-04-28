@@ -1,11 +1,12 @@
 //Final Profile 
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 import '../models/recipe.dart';
 import '../utils/app_theme.dart';
-import '../main.dart';
+import '../controllers/auth_controller.dart';
+import '../controllers/app_controller.dart';
+import '../controllers/navigation_controller.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -125,51 +126,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             const SizedBox(width: 20),
                             Expanded(
-                              child: Consumer<AuthState>(
-                                builder: (context, authState, child) {
-                                  final user = authState.user;
-                                  return Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        user?.displayName ?? 'Cal AI User',
+                              child: Obx(() {
+                                final authController = Get.find<AuthController>();
+                                final user = authController.user;
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      user?.displayName ?? 'Cal AI User',
+                                      style: const TextStyle(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      user?.email ?? 'No email',
+                                      style: const TextStyle(
+                                        fontSize: 13,
+                                        color: Colors.white70,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 12,
+                                        vertical: 6,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white24,
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: Text(
+                                        'Recipes: $_recipeCount',
                                         style: const TextStyle(
-                                          fontSize: 24,
+                                          fontSize: 16,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white,
                                         ),
                                       ),
-                                      const SizedBox(height: 4),
-                                      Text(
-                                        user?.email ?? 'No email',
-                                        style: const TextStyle(
-                                          fontSize: 13,
-                                          color: Colors.white70,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 8),
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 12,
-                                          vertical: 6,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: Colors.white24,
-                                          borderRadius: BorderRadius.circular(20),
-                                        ),
-                                        child: Text(
-                                          'Recipes: $_recipeCount',
-                                          style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              ),
+                                    ),
+                                  ],
+                                );
+                              }),
                             ),
                           ],
                         ),
@@ -183,12 +183,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         height: 50,
                         child: ElevatedButton.icon(
                           onPressed: () async {
-                            await Provider.of<AuthState>(
-                              context,
-                              listen: false,
-                            ).logout();
+                            await Get.find<AuthController>().logout();
                             if (mounted) {
-                              Navigator.pushReplacementNamed(context, '/login');
+                              Get.offAllNamed('/login');
                             }
                           },
                           icon: const Icon(Icons.logout),
@@ -340,17 +337,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 onTap: () {
                                   // Use the app-wide state to share the selected recipe
-                                  final appState = Provider.of<AppState>(
-                                    context,
-                                    listen: false,
-                                  );
-                                  appState.setSelectedRecipe(recipe);
+                                  Get.find<AppController>().setSelectedRecipe(recipe);
 
                                   // Navigate to the Recipes tab (index 2)
-                                  Provider.of<TabNavigationState>(
-                                    context,
-                                    listen: false,
-                                  ).changeTab(2);
+                                  Get.find<NavigationController>().changeTab(2);
                                 },
                               );
                             },

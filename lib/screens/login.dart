@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 import '../utils/app_theme.dart';
-import '../main.dart';
+import '../controllers/auth_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
         final password = _passwordController.text;
 
         // Use the auth state to login via Firebase
-        await Provider.of<AuthState>(context, listen: false).loginWithEmail(
+        await Get.find<AuthController>().loginWithEmail(
           email,
           password,
         );
@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
             _isLoading = false;
           });
           // Navigate to home screen
-          Navigator.pushReplacementNamed(context, '/home');
+          Get.offAllNamed('/home');
         }
       } catch (e) {
         if (mounted) {
@@ -283,7 +283,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           TextButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, '/signup');
+                            Get.toNamed('/signup');
                             },
                             child: const Text(
                               'Sign Up',

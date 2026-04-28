@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
+import '../controllers/app_controller.dart';
 import '../widgets/recipe_card.dart';
 import '../models/recipe.dart';
 import '../services/gemini_api.dart';
@@ -94,15 +95,15 @@ class _HomeScreenState extends State<HomeScreen>
     });
   }
 
-  // Check if there's a recipe selected in AppState
+  // Check if there's a recipe selected in AppController
   void _checkForSelectedRecipe() {
-    final appState = Provider.of<AppState>(context, listen: false);
-    if (appState.selectedRecipe != null) {
+    final appController = Get.find<AppController>();
+    if (appController.selectedRecipe != null) {
       setState(() {
-        _currentRecipe = appState.selectedRecipe;
+        _currentRecipe = appController.selectedRecipe;
       });
-      // Optional: clear the selected recipe from AppState after using it
-      // appState.clearSelectedRecipe();
+      // Optional: clear the selected recipe from AppController after using it
+      // appController.clearSelectedRecipe();
 
       // Scroll to the recipe card after a short delay to ensure rendering is complete
       Future.delayed(const Duration(milliseconds: 300), () {
@@ -569,26 +570,23 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    // Listen to AppState changes to update when a recipe is selected
-    final appState = Provider.of<AppState>(context);
-    if (appState.selectedRecipe != null &&
-        (_currentRecipe == null ||
-            _currentRecipe!.title != appState.selectedRecipe!.title)) {
-      _currentRecipe = appState.selectedRecipe;
-      // Scroll to the recipe card
-      Future.delayed(const Duration(milliseconds: 300), () {
-        if (_scrollController.hasClients) {
-          _scrollController.animateTo(
-            _scrollController.position.maxScrollExtent *
-                0.3, // Approximate position to scroll to the recipe
-            duration: const Duration(milliseconds: 500),
-            curve: Curves.easeInOut,
-          );
-        }
-      });
-      // Optional: clear from app state after using it
-      // appState.clearSelectedRecipe();
-    }
+    // We can also use Obx here if we wanted to reactively update when selectedRecipe changes
+    // But since we use _checkForSelectedRecipe in initState and didChangeDependencies,
+    // and that updates local _currentRecipe state, we might not need Obx for the whole build.
+    // However, to keep it consistent with the previous Provider.of(context) which listens,
+    // we should use Obx or similar if we want reactive updates from AppController.
+
+    final appController = Get.find<AppController>();
+    
+    return Obx(() {
+      // Logic to sync local _currentRecipe with appController.selectedRecipe
+      if (appController.selectedRecipe != null && 
+          (_currentRecipe == null || _currentRecipe!.title != appController.selectedRecipe!.title)) {
+        // Note: calling setState here is not ideal inside build, 
+        // but this logic was previously triggered by Provider listening.
+        // A better way is to use the 'ever' listener in initState.
+        _currentRecipe = appController.selectedRecipe;
+      }
 
     return Scaffold(
       body: SafeArea(
@@ -997,11 +995,7 @@ class _HomeScreenState extends State<HomeScreen>
                             setState(() {
                               _currentRecipe = recipe;
                             });
-                            // Also update AppState so other screens know which recipe is selected
-                            Provider.of<AppState>(
-                              context,
-                              listen: false,
-                            ).setSelectedRecipe(recipe);
+                            Get.find<AppController>().setSelectedRecipe(recipe);
                           },
                         );
                       },
@@ -1014,6 +1008,7 @@ class _HomeScreenState extends State<HomeScreen>
         ),
       ),
     );
+    });
   }
 
   @override
