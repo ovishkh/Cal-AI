@@ -7,6 +7,8 @@ import '../utils/app_theme.dart';
 import '../controllers/auth_controller.dart';
 import '../controllers/app_controller.dart';
 import '../controllers/navigation_controller.dart';
+import '../services/firestore_service.dart';
+import '../models/recipe.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -17,6 +19,27 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   int _recipeCount = 0;
+  
+  Widget _buildRecipeBadge(int count) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 12,
+        vertical: 6,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white24,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Text(
+        'Recipes: $count',
+        style: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
   List<Recipe> _recentRecipes = [];
   bool _isLoading = true;
 
@@ -149,24 +172,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       ),
                                     ),
                                     const SizedBox(height: 8),
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 12,
-                                        vertical: 6,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white24,
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Text(
-                                        'Recipes: $_recipeCount',
-                                        style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
+                                    Obx(() {
+                                      final authController = Get.find<AuthController>();
+                                      if (authController.isLoggedIn) {
+                                        return StreamBuilder<List<Recipe>>(
+                                          stream: FirestoreService().getRecipesStream(authController.user!.uid),
+                                          builder: (context, snapshot) {
+                                            final count = snapshot.data?.length ?? 0;
+                                            return _buildRecipeBadge(count);
+                                          },
+                                        );
+                                      } else {
+                                        return _buildRecipeBadge(_recipeCount);
+                                      }
+                                    }),
                                   ],
                                 );
                               }),

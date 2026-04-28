@@ -27,6 +27,7 @@ class _SignupScreenState extends State<SignupScreen> {
       });
 
       try {
+        final name = _nameController.text.trim();
         final email = _emailController.text.trim();
         final password = _passwordController.text;
 
@@ -34,6 +35,7 @@ class _SignupScreenState extends State<SignupScreen> {
         await Get.find<AuthController>().signupWithEmail(
           email,
           password,
+          name,
         );
 
         if (mounted) {

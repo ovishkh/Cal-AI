@@ -282,6 +282,12 @@ class _HomeScreenState extends State<HomeScreen>
 
       // Save to local storage
       await _saveRecentRecipes();
+
+      // Save to Firestore if logged in
+      final authController = Get.find<AuthController>();
+      if (authController.isLoggedIn) {
+        await authController.saveRecipe(recipe);
+      }
     } catch (e) {
       setState(() {
         _isLoading = false;

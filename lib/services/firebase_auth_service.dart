@@ -11,15 +11,22 @@ class FirebaseAuthService {
   User? get currentUser => _auth.currentUser;
 
   // Sign up with email and password
-  Future<UserCredential?> signUp({
+  Future<UserCredential> signUp({
     required String email,
     required String password,
+    required String name,
   }) async {
     try {
-      return await _auth.createUserWithEmailAndPassword(
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+      
+      // Update display name
+      await userCredential.user?.updateDisplayName(name);
+      await userCredential.user?.reload();
+      
+      return userCredential;
     } on FirebaseAuthException catch (e) {
       if (kDebugMode) {
         print('Firebase Auth Exception: ${e.code} - ${e.message}');
