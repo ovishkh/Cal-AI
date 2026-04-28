@@ -29,44 +29,71 @@ cupertino_icons: ^1.0.8
 
 ## State Management
 
-### Provider
+### GetX
 
 ```yaml
-provider: ^6.1.1
+get: ^4.6.6
 ```
 
-- **Purpose**: Dependency injection and state management
-- **Use**: Managing app state across screens (recipes, meal plans, user data)
+- **Purpose**: High-performance state management, dependency injection, and route management.
+- **Use**: Managing app state across screens (recipes, meal plans, user data) and handling navigation.
 - **Benefits**:
-  - Simple and lightweight
-  - Easy to understand and implement
-  - Great for medium-sized apps
-  - Excellent performance with Consumer widgets
-- **Documentation**: [https://pub.dev/packages/provider](https://pub.dev/packages/provider)
+  - Decouples UI from logic
+  - Reactive state management with `Rx` types
+  - Simple dependency injection (`Get.find`)
+  - Simplified navigation without `BuildContext`
+- **Documentation**: [https://pub.dev/packages/get](https://pub.dev/packages/get)
 
 **Example Usage in Cal AI**:
 
 ```dart
-// Creating a provider
-class RecipeProvider extends ChangeNotifier {
-  List<Recipe> _recipes = [];
+// Controller definition
+class AppController extends GetxController {
+  final Rxn<Recipe> _selectedRecipe = Rxn<Recipe>();
+  Recipe? get selectedRecipe => _selectedRecipe.value;
 
-  Future<void> generateRecipe(String ingredients) async {
-    final recipe = await _geminiService.generateRecipe(ingredients);
-    _recipes.add(recipe);
-    notifyListeners();
+  void setSelectedRecipe(Recipe recipe) {
+    _selectedRecipe.value = recipe;
   }
 }
 
 // Using in widget
-Consumer<RecipeProvider>(
-  builder: (context, recipeProvider, child) {
-    return ListView(...);
-  },
-)
+Obx(() {
+  final controller = Get.find<AppController>();
+  return Text(controller.selectedRecipe?.title ?? 'No selection');
+})
 ```
 
 ## Local Storage
+
+### Firebase Core
+
+```yaml
+firebase_core: ^3.1.1
+```
+
+- **Purpose**: Initialize Firebase services in the Flutter application.
+- **Documentation**: [https://pub.dev/packages/firebase_core](https://pub.dev/packages/firebase_core)
+
+### Firebase Auth
+
+```yaml
+firebase_auth: ^5.1.1
+```
+
+- **Purpose**: Secure user authentication.
+- **Use**: Handling user signup, login, and session persistence.
+- **Documentation**: [https://pub.dev/packages/firebase_auth](https://pub.dev/packages/firebase_auth)
+
+### Cloud Firestore
+
+```yaml
+cloud_firestore: ^5.0.1
+```
+
+- **Purpose**: Flexible, scalable NoSQL cloud database.
+- **Use**: Storing user profiles and persisting generated recipes.
+- **Documentation**: [https://pub.dev/packages/cloud_firestore](https://pub.dev/packages/cloud_firestore)
 
 ### SharedPreferences
 
@@ -74,21 +101,9 @@ Consumer<RecipeProvider>(
 shared_preferences: ^2.2.2
 ```
 
-- **Purpose**: Persistent local storage for key-value data
-- **Use**: Storing user preferences, recipe history, app settings
-- **Storage Locations**:
-  - Android: App-specific directory
-  - iOS: Standard NSUserDefaults
-- **Size Limit**: ~1-2MB per app
+- **Purpose**: Persistent local storage for key-value data (simple settings).
+- **Use**: Storing app-wide settings and local preferences.
 - **Documentation**: [https://pub.dev/packages/shared_preferences](https://pub.dev/packages/shared_preferences)
-
-**Example Usage in Cal AI**:
-
-```dart
-final prefs = await SharedPreferences.getInstance();
-await prefs.setString('lastRecipe', recipeName);
-String? lastRecipe = prefs.getString('lastRecipe');
-```
 
 ## Media & Image Handling
 
@@ -259,10 +274,8 @@ flutter pub upgrade
 
 ## Future Dependency Recommendations
 
-- **GetX**: If state management becomes complex
-- **Firebase**: For backend and authentication
-- **Isar**: For local database (better than SharedPreferences for large data)
-- **Riverpod**: Modern alternative to Provider
+- **Isar**: For advanced local database (better than SharedPreferences for large data)
+- **Riverpod**: Modern alternative to Provider/GetX
 - **Bloc**: For event-driven architecture
 
 ## Related Documentation
